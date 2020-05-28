@@ -11,64 +11,69 @@
                         </div>
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                             @csrf
-                            <div class="form-group{{--{{ $errors->has('name') ? ' has-error' : '' }}"--}}">
-                                <label for="name" class="col-md-4 control-label">Nama Lengkap</label>
+                            <div class="form-group">
+                                <label for="fullname" class="col-md-4 control-label">Nama Lengkap</label>
                                 <div class="col-md-12">
-                                    <input id="name" type="text" class="form-control" name="fullname"
-                                           placeholder="Masukkan nama lengkap" {{--value="{{ old('fullname') }}"--}}>
-
-                                    {{-- @if ($errors->has('name'))
-                                         <span class="help-block">
-                                         <strong>{{ $errors->first('fullname') }}</strong>
-                                     </span>
-                                     @endif--}}
+                                    <input id="fullname" type="text" class="form-control @error('fullname') is-invalid @enderror" name="fullname"
+                                           placeholder="Masukkan nama lengkap" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
+                                    @error('fullname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-md-4 control-label">Username</label>
                                 <div class="col-md-12">
-                                    <input id="name" type="text" class="form-control" name="username"
-                                           placeholder="Co: brucewayne" {{--value="{{ old('username') }}"--}}>
-                                </div>
-                            </div>
-                            <div class="form-group{{--{{ $errors->has('email') ? ' has-error' : '' }}--}}">
-                                <label for="email" class="col-md-4 control-label">Email</label>
-
-                                <div class="col-md-12">
-                                    <input id="email" type="email" class="form-control" name="email"
-                                           placeholder="Co: example@email.com" {{--value="{{ old('email') }}"--}}>
-
-                                    {{--@if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                    <<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                            placeholder="Co: brucewayne" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                    @endif--}}
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="form-group{{--{{ $errors->has('password') ? ' has-error' : '' }}--}}">
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">Email</label>
+                                <div class="col-md-12">
+                                    <<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                                            placeholder="Co: brucewayne@email.com" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="password" class="col-md-4 control-label">Password</label>
-
                                 <div class="col-md-12">
-                                    <input id="password" type="password" class="form-control" name="password"
-                                           placeholder="Masukkan password">
-
-                                    {{-- @if ($errors->has('password'))
-                                         <span class="help-block">
-                                         <strong>{{ $errors->first('password') }}</strong>
-                                     </span>
-                                     @endif--}}
+                                    <<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+                                            placeholder="Masukkan password" value="{{ old('password') }}" required autocomplete="password" autofocus>
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="form-group{{--{{ $errors->has('password') ? ' has-error' : '' }}--}}">
-                                <label for="birthdate" class="col-md-4 control-label">Tanggal Lahir</label>
+                            <div class="form-group">
+                                <label for="usertype" class="col-md-4 control-label">Daftar Sebagai</label>
                                 <div class="col-md-12">
-                                    <input class="form-control" id="dob" type="text"  name="dob">
-
-                                    {{-- @if ($errors->has('password'))
-                                         <span class="help-block">
-                                         <strong>{{ $errors->first('password') }}</strong>
-                                     </span>
-                                     @endif--}}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="usertype" id="usertype" value="Psikolog" >
+                                        <label class="form-check-label" for="usertype">
+                                            Psikolog
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="usertype" id="usertype" value="Klien" >
+                                        <label class="form-check-label" for="usertype">
+                                            Klien
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -89,15 +94,19 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="phone_no" class="col-md-4 control-label">Nomor Telepon</label>
+                                <label for="phone" class="col-md-4 control-label">Nomor Telepon</label>
                                 <div class="col-md-12">
-                                    <input id="phone_no" type="text" class="form-control" name="phone_no"
-                                           placeholder="Masukkan nomor telepon" {{--value="{{old('phone_no')}}"--}}>
+                                    <<input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                            placeholder="Masukkan nomor telepon" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                    @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
-
-                            <div class="row justify-content-center">
-                                <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-register">
                                             <i class="fa fa-btn fa-user"></i> Register
@@ -112,30 +121,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('js')
-    <!--  jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-
-    <!-- Bootstrap Date-Picker Plugin -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-    <script>
-        $(document).ready(function(){
-            var date_input=$('input[name="dob"]'); //our date input has the name "date"
-            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-            var options={
-                format: 'mm/dd/yyyy',
-                container: container,
-                todayHighlight: true,
-                autoclose: true,
-            };
-            date_input.datepicker(options);
-        })
-    </script>
-
 @endsection

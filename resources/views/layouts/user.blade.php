@@ -39,7 +39,7 @@
         </div>
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li><a href="{{route('front.article')}}">Artikel</a></li>
+                <li><a href="{{--{{route('front.article')}}--}}">Artikel</a></li>
                 <li><a href="{{url('/konseling')}}">Konseling</a></li>
                 {{--@if(auth()->guard('user')->check())
                     <li class="drop-down">
@@ -53,21 +53,28 @@
                 @endif--}}
                 <li><a href="{{url('/tanya-jawab')}}">Tanya Jawab</a></li>
                 <li><a href="{{url('/tentang-kami')}}">Tentang Kami</a></li>
-                <li><a href="{{ url('/customer/login') }}">Login</a></li>
-                {{--@if (is_null(Session::get('user_id')))
-                    <li><a href="{{ url('/login') }}">Login</a></li>
+
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
                 @else
                     <li class="drop-down">
                         <a href="#" class="drop-down" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Session::get('user_name') }} <span class="caret"></span>
+                            {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="drop-down" role="menu">
                             <li><a href="{{url('/edit-profile')}}">Edit Profile</a></li>
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                    <i class="fa fa-btn fa-sign-out"></i>Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+
 
                         </ul>
                     </li>
-                @endif--}}
+                @endif
             </ul>
         </nav><!-- .nav-menu -->
     </div>

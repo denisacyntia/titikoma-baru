@@ -16,11 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'Customer\FrontController@index')->name('front.index');
+Route::get('/', function (){
+    return view('user.index');
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function (){
+    /*Route::get('/admin', function (){
+        return view('home');*/
+    Route::get('/admin/dashboard', 'AdminController@dashboard');
+});
+
+/*Route::get('/', 'Customer\FrontController@index')->name('front.index');
 Route::get('/article', 'Customer\FrontController@article')->name('front.article');
 Route::get('/article/cari', 'Customer\FrontController@cari');
 
-Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
+//**Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     Route::get('/home', 'HomeController@index')->name('home'); //JADI ROUTING INI SUDAH ADA DARI ARTIKEL SEBELUMNYA TAPI KITA PINDAHKAN KEDALAM GROUPING
 
     Route::resource('article', 'ArticleController');
@@ -38,5 +48,5 @@ Route::get('/payment', function (){
 
 Route::get('/checkout-finish', function (){
     return view('ecommerce.checkout_finish');
-});
+});*/
 

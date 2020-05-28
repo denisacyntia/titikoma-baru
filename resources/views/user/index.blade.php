@@ -58,18 +58,18 @@
 
         </div>
     </div>
-    <div class="articles" id="articles">
+    {{--<div class="articles" id="articles">
         <div class="container">
 
-            <div class="section-title" {{--data-aos="fade-up"--}}>
+            <div class="section-title" --}}{{--data-aos="fade-up"--}}{{-->
                 <h4>Artikel</h4>
             </div>
 
             <div class="row">
                 @forelse($articles as $row)
                 <div class="col-lg-4 col-md-6">
-                    <div class="icon-box"{{-- data-aos="fade-up"--}}>
-                        <h4 class="title"><a href="">{{$row->name}}{{--Lorem Ipsum--}}</a></h4>
+                    <div class="icon-box"--}}{{-- data-aos="fade-up"--}}{{-->
+                        <h4 class="title"><a href="">{{$row->name}}--}}{{--Lorem Ipsum--}}{{--</a></h4>
                         <p class="description">
                             {!!substr($row->description,0,50)!!}.. Read more
                         </p>
@@ -80,5 +80,5 @@
                 @endforelse
             </div>
         </div>
-    </div>
+    </div>--}}
 @endsection

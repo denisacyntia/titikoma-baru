@@ -12,7 +12,7 @@
                 <i class="nav-icon icon-drop"></i> Kategori
             </a>
         </li>--}}
-        <li class="nav-item">
+       {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('article.index') }}">
             <i class="nav-icon icon-drop"></i> Artikel
         </a>
@@ -21,7 +21,7 @@
             <a class="nav-link" href="{{ route('psikolog.index') }}">
                 <i class="nav-icon icon-drop"></i> Psikolog
             </a>
-        </li>
+        </li>--}}
         {{--<li class="nav-item">
             <a class="nav-link" --}}{{--href="{{ route('orders.index') }}"--}}{{-->
                 <i class="nav-icon icon-drop"></i> Pesanan
