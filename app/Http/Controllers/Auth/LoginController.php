@@ -27,8 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/';
-    protected function redirectTo()
+    protected $redirectTo = '/';
+    /*protected function redirectTo()
     {
         if(Auth::user()->usertype == 'Admin')
         {
@@ -38,7 +38,7 @@ class LoginController extends Controller
         {
             return redirect('/');
         }
-    }
+    }*/
 
     /**
      * Create a new controller instance.

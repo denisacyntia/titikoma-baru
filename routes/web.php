@@ -20,11 +20,11 @@ Route::get('/', function (){
     return view('user.index');
 });
 
-Route::group(['middleware' => ['auth', 'admin']], function (){
+/*Route::group(['middleware' => ['auth', 'admin']], function (){
     /*Route::get('/admin', function (){
         return view('home');*/
-    Route::get('/admin/dashboard', 'AdminController@dashboard');
-});
+    /*Route::get('/admin/dashboard', 'AdminController@dashboard');*/
+/*});*/
 
 /*Route::get('/', 'Customer\FrontController@index')->name('front.index');
 Route::get('/article', 'Customer\FrontController@article')->name('front.article');
